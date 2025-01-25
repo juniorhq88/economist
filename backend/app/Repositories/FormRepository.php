@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\FormRepositoryInterface;
-use App\Models\User;
+use App\Models\Form;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -11,51 +11,51 @@ class FormRepository implements FormRepositoryInterface
 {
     public function getAll(): Collection
     {
-        return User::all();
+        return Form::all();
     }
 
-    public function getById(int $id): ?User
+    public function getById(int $id): ?Form
     {
-        return User::findOrFail($id);
+        return Form::findOrFail($id);
     }
 
-    public function create(array $data): User
+    public function create(array $data): Form
     {
-        return User::create($data);
+        return Form::create($data);
     }
 
-    public function update(int $id, array $data): ?User
+    public function update(int $id, array $data): ?Form
     {
-        $user = User::findOrFail($id);
-        $user->update($data);
+        $form = Form::findOrFail($id);
+        $form->update($data);
 
-        return $user;
+        return $form;
     }
 
     public function delete(int $id): bool
     {
-        return User::destroy($id) > 0;
+        return Form::destroy($id) > 0;
     }
 
     /**
-     * Count Users.
+     * Count Forms.
      */
     public static function count(): int
     {
-        return User::count();
+        return Form::count();
     }
 
     public function getPagination(Request $request)
     {
-        $query = User::query();
+        $query = Form::query();
 
         if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->input('search').'%')
-                ->orWhere('email', 'like', '%'.$request->input('search').'%');
+            $query->where('title', 'like', '%' . $request->input('search') . '%')
+                ->orWhere('description', 'like', '%' . $request->input('search') . '%');
         }
 
-        $users = $query->with('roles')->orderByDesc('id')->paginate(25);
+        $forms = $query->orderByDesc('id')->paginate(25);
 
-        return $users;
+        return $forms;
     }
 }

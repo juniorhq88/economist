@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\MessageRepositoryInterface;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -11,51 +12,51 @@ class MessageRepository implements MessageRepositoryInterface
 {
     public function getAll(): Collection
     {
-        return User::all();
+        return Message::all();
     }
 
-    public function getById(int $id): ?User
+    public function getById(int $id): ?Message
     {
-        return User::findOrFail($id);
+        return Message::findOrFail($id);
     }
 
-    public function create(array $data): User
+    public function create(array $data): Message
     {
-        return User::create($data);
+        return Message::create($data);
     }
 
-    public function update(int $id, array $data): ?User
+    public function update(int $id, array $data): ?Message
     {
-        $user = User::findOrFail($id);
-        $user->update($data);
+        $message = Message::findOrFail($id);
+        $message->update($data);
 
-        return $user;
+        return $message;
     }
 
     public function delete(int $id): bool
     {
-        return User::destroy($id) > 0;
+        return Message::destroy($id) > 0;
     }
 
     /**
-     * Count Users.
+     * Count messages.
      */
     public static function count(): int
     {
-        return User::count();
+        return Message::count();
     }
 
     public function getPagination(Request $request)
     {
-        $query = User::query();
+        $query = Message::query();
 
         if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->input('search').'%')
-                ->orWhere('email', 'like', '%'.$request->input('search').'%');
+            $query->where('subject', 'like', '%' . $request->input('search') . '%')
+                ->orWhere('body', 'like', '%' . $request->input('search') . '%');
         }
 
-        $users = $query->with('roles')->orderByDesc('id')->paginate(25);
+        $messages = $query->orderByDesc('id')->paginate(25);
 
-        return $users;
+        return $messages;
     }
 }

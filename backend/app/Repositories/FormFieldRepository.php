@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\FormFieldRepositoryInterface;
-use App\Models\User;
+use App\Models\FormField;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -11,51 +11,50 @@ class FormFieldRepository implements FormFieldRepositoryInterface
 {
     public function getAll(): Collection
     {
-        return User::all();
+        return FormField::all();
     }
 
-    public function getById(int $id): ?User
+    public function getById(int $id): ?FormField
     {
-        return User::findOrFail($id);
+        return FormField::findOrFail($id);
     }
 
-    public function create(array $data): User
+    public function create(array $data): FormField
     {
-        return User::create($data);
+        return FormField::create($data);
     }
 
-    public function update(int $id, array $data): ?User
+    public function update(int $id, array $data): ?FormField
     {
-        $user = User::findOrFail($id);
-        $user->update($data);
+        $formField = FormField::findOrFail($id);
+        $formField->update($data);
 
-        return $user;
+        return $formField;
     }
 
     public function delete(int $id): bool
     {
-        return User::destroy($id) > 0;
+        return FormField::destroy($id) > 0;
     }
 
     /**
-     * Count Users.
+     * Count FormFields.
      */
     public static function count(): int
     {
-        return User::count();
+        return FormField::count();
     }
 
     public function getPagination(Request $request)
     {
-        $query = User::query();
+        $query = FormField::query();
 
         if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->input('search').'%')
-                ->orWhere('email', 'like', '%'.$request->input('search').'%');
+            $query->where('label', 'like', '%' . $request->input('search') . '%');
         }
 
-        $users = $query->with('roles')->orderByDesc('id')->paginate(25);
+        $FormFields = $query->with('roles')->orderByDesc('id')->paginate(25);
 
-        return $users;
+        return $FormFields;
     }
 }
