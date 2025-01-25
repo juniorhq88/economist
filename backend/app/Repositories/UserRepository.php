@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Interfaces\UserRepositoryInterface;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -42,5 +43,19 @@ class UserRepository implements UserRepositoryInterface
     public static function count(): int
     {
         return User::count();
+    }
+
+    public function getPagination(Request $request)
+    {
+        $query = User::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'like', '%'.$request->input('search').'%')
+                ->orWhere('email', 'like', '%'.$request->input('search').'%');
+        }
+
+        $users = $query->with('roles')->orderByDesc('id')->paginate(25);
+
+        return $users;
     }
 }

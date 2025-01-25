@@ -46,4 +46,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email|regex:/(.*)@(.*)\.(.*)/',
+        'password' => 'required|same:password_confirmation|min:6',
+    ];
 }
