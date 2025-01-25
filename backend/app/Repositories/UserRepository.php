@@ -35,4 +35,12 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::destroy($id) > 0;
     }
+
+    /**
+     * Count Users.
+     */
+    public static function count(): int
+    {
+        return User::count();
+    }
 }
