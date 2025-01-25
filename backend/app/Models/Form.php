@@ -26,4 +26,15 @@ class Form extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static $rules = [
+        'user_id' => 'required',
+        'title' => 'required',
+        'description' => 'sometimes',
+    ];
+
+    public static $messages = [
+        'user_id.required' => 'User ID is required',
+        'title.required' => 'Title is required',
+    ];
 }

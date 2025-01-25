@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Interfaces\MessageRepositoryInterface;
 use App\Models\Message;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -51,8 +50,8 @@ class MessageRepository implements MessageRepositoryInterface
         $query = Message::query();
 
         if ($request->has('search')) {
-            $query->where('subject', 'like', '%' . $request->input('search') . '%')
-                ->orWhere('body', 'like', '%' . $request->input('search') . '%');
+            $query->where('subject', 'like', '%'.$request->input('search').'%')
+                ->orWhere('body', 'like', '%'.$request->input('search').'%');
         }
 
         $messages = $query->orderByDesc('id')->paginate(25);

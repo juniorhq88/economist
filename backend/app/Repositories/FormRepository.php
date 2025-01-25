@@ -50,8 +50,8 @@ class FormRepository implements FormRepositoryInterface
         $query = Form::query();
 
         if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->input('search') . '%')
-                ->orWhere('description', 'like', '%' . $request->input('search') . '%');
+            $query->where('title', 'like', '%'.$request->input('search').'%')
+                ->orWhere('description', 'like', '%'.$request->input('search').'%');
         }
 
         $forms = $query->orderByDesc('id')->paginate(25);

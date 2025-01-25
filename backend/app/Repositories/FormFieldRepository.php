@@ -50,10 +50,10 @@ class FormFieldRepository implements FormFieldRepositoryInterface
         $query = FormField::query();
 
         if ($request->has('search')) {
-            $query->where('label', 'like', '%' . $request->input('search') . '%');
+            $query->where('label', 'like', '%'.$request->input('search').'%');
         }
 
-        $FormFields = $query->with('roles')->orderByDesc('id')->paginate(25);
+        $FormFields = $query->orderByDesc('id')->paginate(25);
 
         return $FormFields;
     }

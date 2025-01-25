@@ -3,7 +3,6 @@
 namespace App\Interfaces;
 
 use App\Models\Form;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 interface FormRepositoryInterface

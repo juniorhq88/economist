@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Form;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUserRequest extends FormRequest
+class CreateFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +25,7 @@ class CreateUserRequest extends FormRequest
      */
     public function rules()
     {
-        return User::$rules;
+        return Form::$rules;
     }
 
     /**
@@ -32,6 +33,6 @@ class CreateUserRequest extends FormRequest
      */
     public function messages()
     {
-        return User::$messages;
+        return Form::$messages;
     }
 }

@@ -29,4 +29,20 @@ class FormField extends Model
     {
         return $this->belongsTo(Form::class);
     }
+
+    public static $rules = [
+        'form_id' => 'required',
+        'label' => 'required',
+        'type' => 'required',
+        'required' => 'sometimes',
+        'order' => 'sometimes',
+        'file_path' => 'sometimes',
+    ];
+
+    public static $messages = [
+        'form_id.required' => 'Form ID is required',
+        'label.required' => 'Label is required',
+        'type.required' => 'Type is required',
+        'type.in' => 'Type must be one of: text, textarea, email, select, radio, checkbox',
+    ];
 }

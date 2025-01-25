@@ -32,4 +32,18 @@ class Message extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static $rules = [
+        'user_id' => 'required',
+        'form_id' => 'required',
+        'subject' => 'required',
+        'body' => 'required',
+    ];
+
+    public static $messages = [
+        'form_id.required' => 'Form ID is required',
+        'user_id.required' => 'User ID is required',
+        'subject.required' => 'Subject is required',
+        'body.required' => 'Body is required',
+    ];
 }
