@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
         function () {
 
             /** User CRUD */
-            Route::resource('user', UserController::class);
+            Route::resource('users', UserController::class);
         }
     );
 });

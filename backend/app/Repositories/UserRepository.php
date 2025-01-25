@@ -54,7 +54,7 @@ class UserRepository implements UserRepositoryInterface
                 ->orWhere('email', 'like', '%'.$request->input('search').'%');
         }
 
-        $users = $query->orderByDesc('id')->paginate(25);
+        $users = $query->with('roles')->orderByDesc('id')->paginate(25);
 
         return $users;
     }
