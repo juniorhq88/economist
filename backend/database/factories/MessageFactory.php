@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Form>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Message>
  */
-class FormFactory extends Factory
+class MessageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,9 @@ class FormFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::factory(),
-            'title' => $this->faker->sentence,
-            'description' => $this->faker->sentence,
+            'form_id' => \App\Models\Form::factory(),
+            'subject' => $this->faker->sentence,
+            'body' => $this->faker->sentence,
         ];
     }
 }
