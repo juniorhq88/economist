@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Junior Hernandez',
             'email' => 'superadmin@economista.mx',
-            'is_admin' => true,
             'password' => Hash::make('Qwerty12345#'),
         ])->each(function ($user) {
             $user->assignRole('SuperAdmin');
