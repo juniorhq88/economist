@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\FormController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,10 @@ Route::middleware('auth')->group(function () {
 
             /** User CRUD */
             Route::resource('users', UserController::class);
+            /** Form CRUD */
+            Route::resource(name: 'forms', controller: FormController::class);
+            /** Message CRUD */
+            Route::resource(name: 'messages', controller: MessageController::class);
         }
     );
 });

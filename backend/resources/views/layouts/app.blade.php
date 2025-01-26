@@ -62,6 +62,12 @@
                     <x-nav-linked :href="route('users.index')" :active="request()->routeIs('users.index')" class="text-white">
                         {{ __('Usuarios') }}
                     </x-nav-linked>
+                    <x-nav-linked :href="route('forms.index')" :active="request()->routeIs('forms.index')" class="text-white">
+                        {{ __('Formularios') }}
+                    </x-nav-linked>
+                    <x-nav-linked :href="route('messages.index')" :active="request()->routeIs('messages.index')" class="text-white">
+                        {{ __('Mensajes') }}
+                    </x-nav-linked>
                 </nav>
             </div>
         </div>
