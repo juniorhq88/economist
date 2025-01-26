@@ -8,9 +8,9 @@
 }
 
 .link-active {
-    @apply text-white hover:border-gray-300 focus:text-gray-700 focus:border-gray-300 leading-5;
+    @apply text-white hover:border-gray-300 focus:text-gray-700 focus:border-gray-300 leading-5 ml-4;
 }
 
 .link-inactive {
-    @apply text-indigo-300 hover:text-white text-base;
+    @apply text-indigo-300 hover:text-white text-base hover:ml-4;
 }

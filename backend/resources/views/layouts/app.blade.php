@@ -155,6 +155,15 @@
                         <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')" class="text-white">
+                            {{ __('Usuarios') }}
+                        </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('forms.index')" :active="request()->routeIs('forms.index')" class="text-white">
+                            {{ __('Formularios') }}
+                        </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('messages.index')" :active="request()->routeIs('messages.index')" class="text-white">
+                            {{ __('Mensajes') }}
+                        </x-responsive-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->
