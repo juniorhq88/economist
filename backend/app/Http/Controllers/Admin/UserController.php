@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use DB;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -66,7 +65,7 @@ class UserController extends Controller
 
         $user->assignRole($request->input('role'));
 
-        return redirect()->route('user.index')->with('success', 'Usuario creado correctamente');
+        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente');
     }
 
     /**
@@ -78,7 +77,7 @@ class UserController extends Controller
 
         $user = $this->userRepository->getById($id);
 
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -102,19 +101,16 @@ class UserController extends Controller
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
         $user->assignRole($roles);
 
-        return redirect()->route('user.index')->with('success', 'Usuario modificado correctamente');
+        return redirect()->route('users.index')->with('success', 'Usuario modificado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user): JsonResponse
+    public function destroy(User $user): RedirectResponse
     {
         $this->userRepository->delete($user->id);
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'User deleted successfully',
-        ]);
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente');
     }
 }
