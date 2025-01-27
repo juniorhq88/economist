@@ -48,7 +48,7 @@
             <div class="flex flex-col w-64 pt-5 pb-4 border-r border-gray-200 bg-blue-950">
                 <div class="flex items-center justify-center h-screen p-2 text-white">
                     <a href="{{ route('dashboard') }}" class="flex items-center text-2xl font-semibold hover:underline">
-                        The Economist
+                        {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 

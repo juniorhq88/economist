@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('users', UserController::class);
             /** Form CRUD */
             Route::resource(name: 'forms', controller: FormController::class);
+
             /** Message CRUD */
             Route::resource(name: 'messages', controller: MessageController::class);
         }
