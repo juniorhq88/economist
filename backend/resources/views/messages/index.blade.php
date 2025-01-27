@@ -8,7 +8,7 @@
     <div class="container px-4 py-8 mx-auto">
         <div class="overflow-hidden bg-white rounded-lg shadow-md">
             <div class="flex items-center justify-between px-6 py-4 border-b bg-gray-50">
-                <h1 class="text-2xl font-bold text-gray-800">Formularios</h1>
+                <h1 class="text-2xl font-bold text-gray-800">Mensajes</h1>
             </div>
 
             @if (session('success'))
@@ -19,7 +19,7 @@
             @endif
 
             <div class="p-4 overflow-x-auto shadow" id="results-table">
-                <livewire:form-table>
+                <livewire:message-table>
             </div>
         </div>
     </div>
