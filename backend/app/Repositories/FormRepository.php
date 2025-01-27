@@ -2,15 +2,21 @@
 
 namespace App\Repositories;
 
+use App\Enum\UserType;
 use App\Interfaces\FormRepositoryInterface;
 use App\Models\Form;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FormRepository implements FormRepositoryInterface
 {
     public function getAll(): Collection
     {
+        if (Auth::user()->role == UserType::Customer) {
+            return Form::where('user_id', Auth::id())->get();
+        }
+
         return Form::all();
     }
 

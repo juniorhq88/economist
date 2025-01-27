@@ -92,4 +92,3 @@ class MessageTable extends Component
         return view('livewire.message-table', compact('messages'));
     }
 }
-
