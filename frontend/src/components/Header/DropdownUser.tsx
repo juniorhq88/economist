@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ClickOutside from '../ClickOutside';
 import UserOne from '../../images/user/user-01.png';
-import useAuthStore from '../../store/authStore.js';
+import { useAuthStore } from '../../store/authStore';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

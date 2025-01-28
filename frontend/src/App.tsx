@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -25,6 +26,8 @@ function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
 
+  const queryClient = new QueryClient();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -36,16 +39,18 @@ function App() {
   return loading ? (
     <Loader />
   ) : (
-    <Routes>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route element={<AuthLayout><Outlet /></AuthLayout>}>
-          <Route path="/" element={<Login />} />
           <Route path="login" element={<Login />} />
         </Route>
         <Route element={<DefaultLayout><Outlet /></DefaultLayout>}>
-            <Route path="dashboard" element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+    </QueryClientProvider>
   );
 }
 

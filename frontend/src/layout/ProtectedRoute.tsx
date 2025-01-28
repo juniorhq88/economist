@@ -1,4 +1,4 @@
-import useAuthStore from '../store/authStore.js';
+import { useAuthStore } from '../store/authStore';
 import { Navigate } from 'react-router';
 
 interface ProtectedRouteProps {
@@ -6,11 +6,11 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const isAuthenticated = useAuthStore((state: any) => state.isAuthenticated);
-
-  if (!isAuthenticated) {
-    // Redirige al usuario si no está autenticado
-    return <Navigate to="/login" />;
+  const user = useAuthStore((state) => state.user);
+  
+  if (!user) {
+    // Redirigir a login si no hay usuario autenticado
+    return <Navigate to="/login" replace />;
   }
 
   // Si está autenticado, renderiza el contenido protegido
