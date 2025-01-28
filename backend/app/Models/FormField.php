@@ -19,7 +19,7 @@ class FormField extends Model
     protected $fillable = [
         'form_id',
         'label',
-        'type', // text, textarea, select, radio, checkbox
+        'type', // text, email, tel, textarea, select, radio, checkbox, file
         'required',
         'order',
         'file_path', // nullable

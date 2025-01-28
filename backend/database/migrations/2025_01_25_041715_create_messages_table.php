@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('form_id')->constrained()->onDelete('cascade');
             $table->string('subject');
             $table->text(column: 'body');
+            $table->string('file_path')->nullable();
             $table->timestamps();
         });
     }

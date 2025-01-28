@@ -21,6 +21,7 @@ class Message extends Model
         'user_id',
         'subject',
         'body',
+        'file_path', // nullable
     ];
 
     public function form(): BelongsTo
