@@ -19,7 +19,7 @@ class FormController extends Controller
 
     public function index(): JsonResponse
     {
-        $forms = $this->formRepository->getAll();
+        $forms = $this->formRepository->getAllMine();
 
         return response()->json($forms);
     }

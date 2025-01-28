@@ -24,6 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('form_id');
             $table->string('label');
             $table->string('type'); // text, textarea, select, radio, checkbox
+            $table->text('value')->nullable();
             $table->boolean('required')->default(false);
             $table->integer('order')->default(0);
             $table->string('file_path')->nullable();

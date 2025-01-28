@@ -64,6 +64,7 @@ class DatabaseSeeder extends Seeder
             'form_id' => $form->id,
             'label' => 'Nombre',
             'type' => 'text',
+            'value' => $faker->name(),
             'required' => 1,
             'order' => 1,
         ]);
@@ -71,6 +72,7 @@ class DatabaseSeeder extends Seeder
             'form_id' => $form->id,
             'label' => 'Correo Electrónico',
             'type' => 'email',
+            'value' => $faker->email,
             'required' => 1,
             'order' => 2,
         ]);
@@ -79,6 +81,7 @@ class DatabaseSeeder extends Seeder
             'form_id' => $form->id,
             'label' => 'Teléfono',
             'type' => 'tel',
+            'value' => $faker->phoneNumber(),
             'required' => 0,
             'order' => 3,
         ]);
@@ -87,15 +90,23 @@ class DatabaseSeeder extends Seeder
             'form_id' => $form->id,
             'label' => 'Adjuntar Archivo',
             'type' => 'file',
+            'value' => 'http://my-nice-file.pdf',
             'required' => 1,
             'order' => 4,
         ]);
+
+        $formFields = FormField::where('form_id', $form->id)->get();
+        $body = '';
+
+        foreach ($formFields as $field) {
+            $body = $body . $field->label . ' ' . $field->value;
+        }
 
         Message::factory([
             'user_id' => $user2->id,
             'form_id' => $form->id,
             'subject' => $faker->title(),
-            'body' => 'Nombre: Nicole Bergmann <br/> Correo: nicole.bergmann@outlook.com <br/> Teléfono: +15236879542 <br/> Archivo adjunto: http://my-nice-file.pdf'
+            'body' => $body
         ]);
 
         Form::factory()->create([

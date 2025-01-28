@@ -19,7 +19,7 @@ class FormFieldFactory extends Factory
         return [
             'form_id' => \App\Models\Form::factory(),
             'label' => $this->faker->sentence,
-            'type' => $this->faker->randomElement(['text', 'textarea', 'select', 'radio', 'checkbox']),
+            'type' => $this->faker->randomElement(['text', 'email', 'tel', 'textarea', 'select', 'radio', 'checkbox']),
             'required' => $this->faker->boolean,
             'order' => $this->faker->numberBetween(1, 10),
             'file_path' => $this->faker->optional()->sentence,

@@ -20,6 +20,7 @@ class FormField extends Model
         'form_id',
         'label',
         'type', // text, email, tel, textarea, select, radio, checkbox, file
+        'value',
         'required',
         'order',
         'file_path', // nullable
@@ -35,6 +36,7 @@ class FormField extends Model
         'label' => 'required',
         'type' => 'required',
         'required' => 'sometimes',
+        'value' => 'sometimes',
         'order' => 'sometimes',
         'file_path' => 'sometimes',
     ];
@@ -43,6 +45,6 @@ class FormField extends Model
         'form_id.required' => 'Form ID is required',
         'label.required' => 'Label is required',
         'type.required' => 'Type is required',
-        'type.in' => 'Type must be one of: text, textarea, email, select, radio, checkbox',
+        'type.in' => 'Type must be one of: text, email, tel, textarea, email, select, radio, checkbox',
     ];
 }

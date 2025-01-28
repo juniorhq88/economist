@@ -33,6 +33,11 @@ class Form extends Model
         return $this->hasMany(Message::class);
     }
 
+    public function fields(): HasMany
+    {
+        return $this->hasMany(FormField::class);
+    }
+
     public static $rules = [
         'user_id' => 'required',
         'title' => 'required',
