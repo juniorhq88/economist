@@ -7,6 +7,7 @@ import { useAuthStore } from '../../store/authStore';
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const logout = useAuthStore((state: { logout: any; }) => state.logout);
+  const user = useAuthStore((state) => state.user);
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
       <Link
@@ -16,9 +17,8 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            { user.name }
           </span>
-          <span className="block text-xs">UX Designer</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
