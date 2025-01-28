@@ -14,16 +14,18 @@ class FormRepository implements FormRepositoryInterface
     public function getAll(): Collection
     {
         if (Auth::user()->role == UserType::Customer) {
-            return Form::where('user_id', Auth::user()->id)->get();
+            $userId = Auth::user()->id;
+
+            return Form::with(['messages', 'fields'])->where('user_id', $userId)->get();
         }
 
-        return Form::all();
+        return Form::with(['messages', 'fields'])->get();
     }
 
     public function getAllMine(): Collection
     {
 
-        return Form::with(['messages','fields'])->where('user_id', Auth::user()->id)->get();
+        return Form::with(['messages', 'fields'])->where('user_id', Auth::user()->id)->get();
 
     }
 

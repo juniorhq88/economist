@@ -8,9 +8,9 @@ use App\Models\FormField;
 use App\Models\Message;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -50,10 +50,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $user4->assignRole(UserType::Customer->value);
 
-
-
-
-        //Formulario
+        // Formulario
         $form = Form::factory()->create([
             'title' => 'Formulario de prueba',
             'description' => 'Formulario de prueba',
@@ -99,14 +96,14 @@ class DatabaseSeeder extends Seeder
         $body = '';
 
         foreach ($formFields as $field) {
-            $body = $body . $field->label . ' ' . $field->value;
+            $body = $body.$field->label.' '.$field->value;
         }
 
-        Message::factory([
+        $msg = Message::factory()->create([
             'user_id' => $user2->id,
             'form_id' => $form->id,
             'subject' => $faker->title(),
-            'body' => $body
+            'body' => $body,
         ]);
 
         Form::factory()->create([
