@@ -2,11 +2,13 @@
 
 namespace Tests\Unit\Repositories;
 
+use App\Enum\UserType;
 use App\Models\Form;
 use App\Models\User;
 use App\Repositories\FormRepository;
 use Faker\Factory as Faker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class FormRepositoryTest extends TestCase
@@ -23,6 +25,11 @@ class FormRepositoryTest extends TestCase
 
     public function test_get_all_forms()
     {
+        $user = User::factory()->create();
+        $role = Role::create(['name' => UserType::Customer->value]);
+        $user->assignRole($role);
+        $this->actingAs($user);
+
         Form::factory()->count(5)->create();
         $forms = $this->formRepository->getAll();
         $this->assertCount(5, $forms);
