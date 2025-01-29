@@ -7,19 +7,17 @@ import { LoginForm } from '../../components/LoginForm';
 const Login: React.FC = () => {
   return (
     <>
-      <div className="bg-white  shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
-          <div className="hidden w-full xl:block xl:w-1/2">
+          <div className="hidden w-full xl:block xl:w-1/2 bg-blue-950">
             <div className="py-17.5 px-26 text-center">
               <Link className="mb-5.5 inline-block" to="/">
-                <img className="hidden dark:block" src={Logo} alt="Logo" />
-                <img className="dark:hidden" src={LogoDark} alt="Logo" />
+                <img className="dark:hidden" src={Logo} alt="Logo" />
               </Link>
 
-              <p className="2xl:px-20">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                suspendisse.
-              </p>
+                <p className="2xl:px-20 text-white">
+                Welcome to our platform. Please login to continue.
+                </p>
 
               <span className="inline-block mt-15">
                 <svg

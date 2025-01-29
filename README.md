@@ -21,7 +21,7 @@ Proyecto de prueba técnica que implementa una aplicación web utilizando Larave
 
 ```bash
 git clone https://github.com/juniorhq88/economist.git
-cd tu_proyecto
+cd tu_proyecto/backend
 ```
 
 ### 2. Configuración del Backend
@@ -30,6 +30,8 @@ cd tu_proyecto
 
 ```bash
 composer install
+npm install
+npm run build
 ```
 
 #### Configurar Variables de Entorno
@@ -66,6 +68,7 @@ php artisan serve
 #### Instalar Dependencias
 
 ```bash
+cd tu_proyecto/frontend
 npm install
 ```
 

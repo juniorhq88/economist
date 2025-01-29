@@ -32,13 +32,14 @@ class FormField extends Model
     }
 
     public static $rules = [
-        'form_id' => 'required',
-        'label' => 'required',
-        'type' => 'required',
-        'required' => 'sometimes',
-        'value' => 'sometimes',
-        'order' => 'sometimes',
-        'file_path' => 'sometimes',
+        'fields' => ['required', 'array'],
+        'fields.*.form_id' => ['required', 'exists:forms,id'],
+        'fields.*.label' => ['required', 'string', 'max:255'],
+        'fields.*.type' => ['required', 'string', 'in:text,number,tel,email,textarea'],
+        'fields.*.required' => ['required', 'boolean'],
+        'fields.*.value' => 'sometimes',
+        'fields.*.order' => ['required', 'integer', 'min:1'],
+        'fields.*.file_path' => 'sometimes',
     ];
 
     public static $messages = [
