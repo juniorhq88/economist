@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* resources/css/app.css */
+.link-base {
+    @apply flex items-center text-indigo-300 px-2 py-2 text-base font-medium transition duration-150 ease-in-out focus:outline-none;
+}
+
+.link-active {
+    @apply text-white hover:border-gray-300 focus:text-gray-700 focus:border-gray-300 leading-5 ml-4;
+}
+
+.link-inactive {
+    @apply text-indigo-300 hover:text-white text-base hover:ml-4;
+}
