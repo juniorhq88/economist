@@ -87,4 +87,11 @@ class FormController extends Controller
 
         return redirect()->route(route: 'forms.index')->with('success', 'Formulario eliminado correctamente');
     }
+
+    public function getMessageFromUser(int $idForm): View
+    {
+        $messages = $this->formRepository->getMessageFromUser(idForm: $idForm);
+
+        return view('forms.message', compact(var_name: 'messages'));
+    }
 }

@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('users', UserController::class);
             /** Form CRUD */
             Route::resource(name: 'forms', controller: FormController::class);
+            Route::get('forms/{id}/messages', [FormController::class, 'getMessageFromUser'])->name('forms.messages');
 
             /** Message CRUD */
             Route::resource(name: 'messages', controller: MessageController::class);

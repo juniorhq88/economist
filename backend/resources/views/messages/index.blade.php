@@ -26,7 +26,7 @@
 
     <input type="hidden" name="url" id="url" value="{{ asset('/') }}">
 
-    <script type="text/javascript">
+    <!--script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('search-form');
             const resultsTable = document.getElementById('results-table');
@@ -77,5 +77,5 @@
                     });
             });
         });
-    </script>
+    </script-->
 </x-app-layout>

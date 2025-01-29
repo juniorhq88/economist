@@ -14,7 +14,7 @@ class MessageTable extends Component
 
     public $filter = '';
 
-    public $sortField = 'title';
+    public $sortField = 'subject';
 
     public $sortDirection = 'asc';
 
@@ -61,7 +61,7 @@ class MessageTable extends Component
 
         $pagination = 15;
 
-        $messages = Message::query()->with(['user', 'forms'])
+        $messages = Message::query()->with(['user', 'form'])
             ->when($this->search, function ($query) {
                 return $query->where('subject', 'like', '%'.$this->search.'%');
             });

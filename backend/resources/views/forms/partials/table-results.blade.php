@@ -27,7 +27,7 @@
                 <td class="px-6 py-3 text-center">
                     <div class="flex justify-center item-center">
                         @if ($form->messages->count())
-                            <a href="">Mensajes enviados</a>
+                            <a href="{{ route('forms.messages', $form->id) }}">Mensajes enviados</a>
                         @endif
                     </div>
                 </td>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://economic.test:8088/backend/public',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 export const loginRequest = async (credentials: LoginCredentials): Promise<AuthResponse> => {

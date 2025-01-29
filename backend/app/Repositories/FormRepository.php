@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Enum\UserType;
 use App\Interfaces\FormRepositoryInterface;
 use App\Models\Form;
+use App\Models\Message;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,6 @@ class FormRepository implements FormRepositoryInterface
     {
 
         return Form::with(['messages', 'fields'])->where('user_id', Auth::user()->id)->get();
-
     }
 
     public function getById(int $id): ?Form
@@ -72,5 +72,10 @@ class FormRepository implements FormRepositoryInterface
         $forms = $query->orderByDesc('id')->paginate(25);
 
         return $forms;
+    }
+
+    public static function getMessageFromUser(int $idForm)
+    {
+        return Message::where('form_id', $idForm)->paginate(15);
     }
 }
