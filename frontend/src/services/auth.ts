@@ -1,19 +1,20 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
+import { config } from './config';
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8088',
+  baseURL: `${config.url}`,
 });
 
 const token = useAuthStore.getState().token;
 
 export const loginRequest = async (credentials: LoginCredentials): Promise<AuthResponse> => {
-  const { data } = await api.post<AuthResponse>('/api/login', credentials);
+  const { data } = await api.post<AuthResponse>('login', credentials);
   return data;
 };
 
 export const formRequest = async () => {
-  const { data } = await api.get('/api/forms', {
+  const { data } = await api.get('forms', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -23,7 +24,16 @@ export const formRequest = async () => {
 
 
 export const sendForm = async (credentials: FormCredentials) => {
-  const { data } = await api.post('/api/forms', credentials, {
+  const { data } = await api.post('forms', credentials, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+export const sendFormFields = async (credentials: any) => {
+  const { data } = await api.post('form-field', credentials, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

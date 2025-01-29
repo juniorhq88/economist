@@ -3,10 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
+import { config } from '../services/config';
 
 const fetchForms = async () => {
   const token = useAuthStore.getState().token;
-  const { data } = await axios.get('http://127.0.0.1:8088/api/forms', {
+  const { data } = await axios.get(`${config.url}forms`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

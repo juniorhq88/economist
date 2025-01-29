@@ -4,8 +4,8 @@ import { useAuthStore } from '../store/authStore';
 import { Navigate } from 'react-router-dom';
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('hanna@economista.mx');
+  const [password, setPassword] = useState('1234567890');
   const login = useLogin();
 
   const user = useAuthStore((state) => state.user);
