@@ -31,7 +31,7 @@ class FormRepository implements FormRepositoryInterface
 
     public function getById(int $id): ?Form
     {
-        return Form::findOrFail($id);
+        return Form::with(['messages', 'fields'])->findOrFail($id);
     }
 
     public function create(array $data): Form
