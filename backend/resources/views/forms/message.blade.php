@@ -9,6 +9,9 @@
         <div class="overflow-hidden bg-white rounded-lg shadow-md">
             <div class="flex items-center justify-between px-6 py-4 border-b bg-gray-50">
                 <h1 class="text-2xl font-bold text-gray-800">Mensajes de {{ $messages->first()->user->name }}</h1>
+                <a href="{{ route('forms.index') }}"
+                    class="px-4 py-2 font-bold text-white bg-blue-800 rounded hover:bg-blue-600">
+                    < Regresar </a>
             </div>
 
             @if (session('success'))

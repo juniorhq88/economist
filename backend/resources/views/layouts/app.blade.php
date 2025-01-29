@@ -65,9 +65,6 @@
                     <x-nav-linked :href="route('forms.index')" :active="request()->routeIs('forms.index')" class="text-white">
                         {{ __('Formularios') }}
                     </x-nav-linked>
-                    <x-nav-linked :href="route('messages.index')" :active="request()->routeIs('messages.index')" class="text-white">
-                        {{ __('Mensajes') }}
-                    </x-nav-linked>
                 </nav>
             </div>
         </div>
@@ -160,9 +157,6 @@
                         </x-responsive-nav-link>
                         <x-responsive-nav-link :href="route('forms.index')" :active="request()->routeIs('forms.index')" class="text-white">
                             {{ __('Formularios') }}
-                        </x-responsive-nav-link>
-                        <x-responsive-nav-link :href="route('messages.index')" :active="request()->routeIs('messages.index')" class="text-white">
-                            {{ __('Mensajes') }}
                         </x-responsive-nav-link>
                     </div>
 

@@ -1,4 +1,4 @@
-<table class="w-full">
+<table class="min-w-full">
     <thead>
         <tr class="text-sm leading-normal text-gray-600 uppercase bg-gray-100">
             <th class="px-6 py-3 text-center">Formulario</th>

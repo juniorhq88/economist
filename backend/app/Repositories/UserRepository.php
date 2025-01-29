@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Enum\UserType;
 use App\Interfaces\UserRepositoryInterface;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,6 +13,13 @@ class UserRepository implements UserRepositoryInterface
     public function getAll(): Collection
     {
         return User::all();
+    }
+
+    public function getAllCustomer(): Collection
+    {
+        return User::whereHas('roles', function ($query) {
+            $query->where('name', UserType::Customer->value);
+        })->get();
     }
 
     public function getById(int $id): ?User

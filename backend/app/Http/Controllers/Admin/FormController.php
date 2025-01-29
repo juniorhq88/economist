@@ -7,6 +7,7 @@ use App\Http\Requests\CreateFormRequest;
 use App\Http\Requests\UpdateFormRequest;
 use App\Models\Form;
 use App\Repositories\FormRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,9 +16,12 @@ class FormController extends Controller
 {
     protected $formRepository;
 
-    public function __construct(FormRepository $formRepository)
+    protected $userRepository;
+
+    public function __construct(FormRepository $formRepository, UserRepository $userRepository)
     {
         $this->formRepository = $formRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
