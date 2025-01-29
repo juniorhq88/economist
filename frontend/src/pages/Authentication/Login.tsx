@@ -1,23 +1,13 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LogoDark from '../../images/logo/logo-dark.svg';
 import Logo from '../../images/logo/logo.svg';
-import { useAuthStore } from '../../store/authStore';
 import { LoginForm } from '../../components/LoginForm';
 
 const Login: React.FC = () => {
-
-  const login = useAuthStore((state: { login: any; }) => state.login); // Acción para iniciar sesión
-  const navigate = useNavigate();
-
-  const handleLogin = (): void => {
-    login(); // Actualiza el estado de autenticación
-    navigate('/dashboard'); // Redirige a la ruta protegida
-  };
-
   return (
     <>
-      <div className=" bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="bg-white  shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
@@ -31,7 +21,7 @@ const Login: React.FC = () => {
                 suspendisse.
               </p>
 
-              <span className="mt-15 inline-block">
+              <span className="inline-block mt-15">
                 <svg
                   width="350"
                   height="350"
@@ -158,7 +148,7 @@ const Login: React.FC = () => {
 
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+              <h2 className="text-2xl font-bold text-black mb-9 dark:text-white sm:text-title-xl2">
                 Login
               </h2>
 
@@ -166,7 +156,6 @@ const Login: React.FC = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );

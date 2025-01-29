@@ -9,6 +9,11 @@ interface LoginCredentials {
     password: string;
 }
 
+interface FormCredentials {
+    title: string;
+    description: string;
+}
+
 interface AuthResponse {
     user: User;
     token: string;
